@@ -48,7 +48,7 @@ class ApiService {
       .then(this.res.doSuccessAction)
       .catch(this.res.doFailureAction);
 
-    response.then((res) => callback(false, res), (err) => callback(err));
+    response.then((res: AxiosResponse<any>) => callback(false, res), (err) => callback(err));
   }
 
   delete(url: string, callback: Callback, options: AxiosRequestConfig = {}): void {

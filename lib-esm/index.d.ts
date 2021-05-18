@@ -5,7 +5,7 @@ declare type Callback = (error: any, response?: string | AxiosResponse<any>) => 
 declare class ApiService {
     baseUrl: string;
     req: RequestService;
-    res: ResponseService;
+    res: ResponseService<ResponseServiceError, AxiosResponse<any>>;
     urlKey: string;
     constructor(config: any);
     protected buildQuery(queryParams: string | {
