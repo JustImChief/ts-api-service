@@ -9,8 +9,8 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-import { default as RequestService } from 'ts-request-service';
-import { default as ResponseService } from 'ts-response-service-cli';
+import { default as RequestService, RequestServiceError } from 'ts-request-service';
+import { default as ResponseService, ResponseServiceError } from 'ts-response-service-cli';
 var ApiService = /** @class */ (function () {
     function ApiService(config) {
         this.res = new ResponseService();
@@ -76,5 +76,5 @@ var ApiService = /** @class */ (function () {
     return ApiService;
 }());
 export default ApiService;
-export { RequestService, ResponseService };
+export { RequestService, RequestServiceError, ResponseService, ResponseServiceError };
 //# sourceMappingURL=index.js.map

@@ -1,6 +1,6 @@
-import { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { default as RequestService }         from 'ts-request-service';
-import { default as ResponseService }        from 'ts-response-service-cli';
+import { AxiosRequestConfig, AxiosResponse }                from 'axios';
+import { default as RequestService, RequestServiceError }   from 'ts-request-service';
+import { default as ResponseService, ResponseServiceError } from 'ts-response-service-cli';
 
 type Callback = (error: any, response?: string | AxiosResponse<any>) => any;
 
@@ -85,4 +85,4 @@ class ApiService {
 }
 
 export default ApiService;
-export { RequestService, ResponseService };
+export { RequestService, RequestServiceError, ResponseService, ResponseServiceError };
