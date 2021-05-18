@@ -9,7 +9,7 @@ module.exports = {
   output:  {
     path:           path.resolve(__dirname, '_bundles'),
     filename:       '[name].js',
-    library:        'TSResponseServiceCli',
+    library:        'TSAPIService',
     umdNamedDefine: true,
   },
   resolve: {
