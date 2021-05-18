@@ -32,7 +32,7 @@
   "homepage": "https://github.com/JustImChief/ts-api-service#readme",
   "dependencies": {
     "ts-request-service": "^1.0.2",
-    "ts-response-service-cli": "^1.0.1"
+    "ts-response-service-cli": "^1.0.2"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
