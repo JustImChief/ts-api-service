@@ -40,38 +40,38 @@ var ApiService = /** @class */ (function () {
         var response = this.res.processResponse(promise)
             .then(this.res.doSuccessAction)
             .catch(this.res.doFailureAction);
-        response.then(function (res) { return callback(false, res); }, function (err) { return callback(err); });
+        return response.then(function (res) { return callback(false, res); }, function (err) { return callback(err); });
     };
     ApiService.prototype.delete = function (url, callback, options) {
         if (options === void 0) { options = {}; }
-        this.processResponse(this.req.delete(this.getUrl(url), options), callback);
+        return this.processResponse(this.req.delete(this.getUrl(url), options), callback);
     };
     ApiService.prototype.get = function (url, callback, options) {
         if (options === void 0) { options = {}; }
-        this.processResponse(this.req.get(this.getUrl(url), options), callback);
+        return this.processResponse(this.req.get(this.getUrl(url), options), callback);
     };
     ApiService.prototype.getUri = function (callback, options) {
         callback(false, this.req.getUri(options));
     };
     ApiService.prototype.head = function (url, callback, options) {
         if (options === void 0) { options = {}; }
-        this.processResponse(this.req.head(this.getUrl(url), options), callback);
+        return this.processResponse(this.req.head(this.getUrl(url), options), callback);
     };
     ApiService.prototype.options = function (url, callback, options) {
         if (options === void 0) { options = {}; }
-        this.processResponse(this.req.options(this.getUrl(url), options), callback);
+        return this.processResponse(this.req.options(this.getUrl(url), options), callback);
     };
     ApiService.prototype.patch = function (url, data, callback, options) {
         if (options === void 0) { options = {}; }
-        this.processResponse(this.req.patch(this.getUrl(url), data, options), callback);
+        return this.processResponse(this.req.patch(this.getUrl(url), data, options), callback);
     };
     ApiService.prototype.post = function (url, data, callback, options) {
         if (options === void 0) { options = {}; }
-        this.processResponse(this.req.post(this.getUrl(url), data, options), callback);
+        return this.processResponse(this.req.post(this.getUrl(url), data, options), callback);
     };
     ApiService.prototype.put = function (url, data, callback, options) {
         if (options === void 0) { options = {}; }
-        this.processResponse(this.req.put(this.getUrl(url), data, options), callback);
+        return this.processResponse(this.req.put(this.getUrl(url), data, options), callback);
     };
     return ApiService;
 }());

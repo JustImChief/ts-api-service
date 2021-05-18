@@ -2,8 +2,6 @@ import { AxiosRequestConfig, AxiosResponse }                from 'axios';
 import { default as RequestService, RequestServiceError }   from 'ts-request-service';
 import { default as ResponseService, ResponseServiceError } from 'ts-response-service-cli';
 
-type Callback = (error: any, response?: string | AxiosResponse<any>) => any;
-
 class ApiService {
   baseUrl: string;
   req: RequestService;
@@ -43,46 +41,47 @@ class ApiService {
     return queryString.replace(/&$/, '').replace(/\?$/, '').replace(/\/$/, '');
   }
 
-  protected processResponse(promise: Promise<AxiosResponse<any>>, callback: Callback) {
+  protected processResponse(promise: Promise<AxiosResponse<any>>, callback: Callback): Promise<any> {
     const response = this.res.processResponse(promise)
       .then(this.res.doSuccessAction)
       .catch(this.res.doFailureAction);
 
-    response.then((res: AxiosResponse<any>) => callback(false, res), (err) => callback(err));
+    return response.then((res: AxiosResponse<any>) => callback(false, res), (err) => callback(err));
   }
 
-  delete(url: string, callback: Callback, options: AxiosRequestConfig = {}): void {
-    this.processResponse(this.req.delete(this.getUrl(url), options), callback);
+  delete(url: string, callback: Callback, options: AxiosRequestConfig = {}): Promise<any> {
+    return this.processResponse(this.req.delete(this.getUrl(url), options), callback);
   }
 
-  get(url: string, callback: Callback, options: AxiosRequestConfig = {}): void {
-    this.processResponse(this.req.get(this.getUrl(url), options), callback);
+  get(url: string, callback: Callback, options: AxiosRequestConfig = {}): Promise<any> {
+    return this.processResponse(this.req.get(this.getUrl(url), options), callback);
   }
 
   getUri(callback: Callback, options: AxiosRequestConfig): void {
     callback(false, this.req.getUri(options));
   }
 
-  head(url: string, callback: Callback, options: AxiosRequestConfig = {}): void {
-    this.processResponse(this.req.head(this.getUrl(url), options), callback);
+  head(url: string, callback: Callback, options: AxiosRequestConfig = {}): Promise<any> {
+    return this.processResponse(this.req.head(this.getUrl(url), options), callback);
   }
 
-  options(url: string, callback: Callback, options: AxiosRequestConfig = {}): void {
-    this.processResponse(this.req.options(this.getUrl(url), options), callback);
+  options(url: string, callback: Callback, options: AxiosRequestConfig = {}): Promise<any> {
+    return this.processResponse(this.req.options(this.getUrl(url), options), callback);
   }
 
-  patch(url: string, data: any, callback: Callback, options: AxiosRequestConfig = {}): void {
-    this.processResponse(this.req.patch(this.getUrl(url), data, options), callback);
+  patch(url: string, data: any, callback: Callback, options: AxiosRequestConfig = {}): Promise<any> {
+    return this.processResponse(this.req.patch(this.getUrl(url), data, options), callback);
   }
 
-  post(url: string, data: any, callback: Callback, options: AxiosRequestConfig = {}): void {
-    this.processResponse(this.req.post(this.getUrl(url), data, options), callback);
+  post(url: string, data: any, callback: Callback, options: AxiosRequestConfig = {}): Promise<any> {
+    return this.processResponse(this.req.post(this.getUrl(url), data, options), callback);
   }
 
-  put(url: string, data: any, callback: Callback, options: AxiosRequestConfig = {}): void {
-    this.processResponse(this.req.put(this.getUrl(url), data, options), callback);
+  put(url: string, data: any, callback: Callback, options: AxiosRequestConfig = {}): Promise<any> {
+    return this.processResponse(this.req.put(this.getUrl(url), data, options), callback);
   }
 }
 
 export default ApiService;
+export type Callback = (error: any, response?: string | AxiosResponse<any>) => any;
 export { RequestService, RequestServiceError, ResponseService, ResponseServiceError };
