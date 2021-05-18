@@ -1,5 +1,5 @@
 {
-  "name": "ts-api-service",
+  "name": "ts-axios-api-service",
   "version": "1.0.0",
   "description": "React API service",
   "main": "src/index.ts",
